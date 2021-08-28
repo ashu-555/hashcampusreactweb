@@ -1,0 +1,40 @@
+.browsehome{
+     background:black;
+     font-weight: bolder;
+
+}
+.col{
+     padding: 3rem;
+}
+.videoheader{
+     background-image: url('/brows.jpg');
+     height: 700px;
+     background-size: cover;
+     background-repeat: no-repeat, repeat;
+}
+.feature-title-browse{
+    padding-left: 14%;
+    padding-top: 10%;
+    
+}
+.subtitles{
+    color:black;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    
+}
+.subtitle{
+    color:black;
+    font-family:  sans-serif;
+    font-weight: bold;
+    
+}
+.btnst{
+    margin: 2%;
+    color: white;
+    width: 30%;
+    height: 60px;
+    font-size: 28px;
+ 
+}
