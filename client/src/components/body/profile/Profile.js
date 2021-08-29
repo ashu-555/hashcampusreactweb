@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {useSelector, useDispatch} from 'react-redux'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {isLength, isMatch} from '../../utils/validation/Validation'
 import {showSuccessMsg, showErrMsg} from '../../utils/notification/Notification'
 import {fetchAllUsers, dispatchGetAllUsers} from '../../../redux/actions/usersAction'
@@ -18,7 +18,7 @@ function Profile() {
     const auth = useSelector(state => state.auth)
     const token = useSelector(state => state.token)
 
-    // const users = useSelector(state => state.users)
+     const users = useSelector(state => state.users)
 
     const {user, isAdmin} = auth
     const [data, setData] = useState(initialState)
@@ -110,23 +110,23 @@ function Profile() {
         if(password) updatePassword()
     }
 
-    // const handleDelete = async (id) => {
-    //     try {
-    //         if(user._id !== id){
-    //             if(window.confirm("Are you sure you want to delete this account?")){
-    //                 setLoading(true)
-    //                 await axios.delete(`/user/delete/${id}`, {
-    //                     headers: {Authorization: token}
-    //                 })
-    //                 setLoading(false)
-    //                 setCallback(!callback)
-    //             }
-    //         }
+    const handleDelete = async (id) => {
+        try {
+            if(user._id !== id){
+                if(window.confirm("Are you sure you want to delete this account?")){
+                    setLoading(true)
+                    await axios.delete(`/user/delete/${id}`, {
+                        headers: {Authorization: token}
+                    })
+                    setLoading(false)
+                    setCallback(!callback)
+                }
+            }
             
-    //     } catch (err) {
-    //         setData({...data, err: err.response.data.msg , success: ''})
-    //     }
-    // }
+        } catch (err) {
+            setData({...data, err: err.response.data.msg , success: ''})
+        }
+    }
 
     return (
         <>
@@ -185,7 +185,7 @@ function Profile() {
             <div className="col-right">
                 <h2>{isAdmin ? "Users" : "My Orders"}</h2>
 
-                {/* <div style={{overflowX: "auto"}}>
+                <div style={{overflowX: "auto"}}>
                     <table className="customers">
                         <thead>
                             <tr>
@@ -221,8 +221,8 @@ function Profile() {
                                 ))
                             }
                         </tbody>
-                    </table> */}
-                {/* </div> */}
+                    </table>
+                </div>
             </div>
         </div>
         </>

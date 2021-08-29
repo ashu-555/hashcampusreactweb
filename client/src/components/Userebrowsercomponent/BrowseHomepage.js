@@ -1,33 +1,20 @@
 import React , {useEffect ,useState} from 'react'
 import ReactPlayer from 'react-player'
 import Modal from 'react-modal'
-import ReactAudioPlayer from'react-audio-player'
-import { Document, Page, pdfjs } from 'react-pdf';
 import './BrowseHomepage.css'
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function BrowseHomepage() {
     const [data,setData] =useState([])
     const [modalIsOpen ,setModalISOpen] =React.useState(false);
     const urls ='http://localhost:5000/books'
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
-    
-    function onDocumentLoadSuccess({ numPages }) {
-        setNumPages(numPages);
-      }
-
-      
 
     useEffect(()=>{
     fetch(urls).then((result)=>{
          result.json().then((res)=>{
              setData(res.books)
-          
-         })
-         
-     })
+           })
+        })
     },[])
 
     
@@ -73,8 +60,6 @@ function BrowseHomepage() {
                             height='10rem'
                             controls
                             url='http://localhost:5000/videos/video/tom-and-jerry' />
-                            <h5 class="text-dark">{item.title}</h5><br></br>
-                             <h6 class="text-dark"><i>{item. authors}</i></h6> 
                         </div>
                         )
                      }
@@ -92,8 +77,6 @@ function BrowseHomepage() {
                             height='10rem'
                             controls
                             url='http://localhost:5000/videos/video/tom-and-jerry' />
-                            <h5 class="text-dark">{item.title}</h5>
-                            <h6 class="text-dark"><i>{item. authors}</i></h6>
                         </div>
                         )
                      }
@@ -111,8 +94,6 @@ function BrowseHomepage() {
                             height='10rem'
                             controls
                             url='http://localhost:5000/videos/video/tom-and-jerry' />
-                            <h5 class="text-dark">{item.title}</h5>
-                            <h6 class="text-dark"><i>{item. authors}</i></h6>
                         </div>
                         )
                      }
@@ -130,8 +111,6 @@ function BrowseHomepage() {
                             height='10rem'
                             controls
                             url='http://localhost:5000/videos/video/tom-and-jerry' />
-                           <h5 class="text-dark">{item.title}</h5> 
-                           <h6 class="text-dark"><i>{item. authors}</i></h6> 
                         </div>
                         )
                      }
@@ -149,17 +128,12 @@ function BrowseHomepage() {
                             height='10rem'
                             controls
                             url="http://localhost:5000/videos/video/soul" />
-                            <h5 class="text-dark">{item.title}</h5>
-                            <h6 class="text-dark"><i>{item. authors}</i></h6>
                         </div>
-                      
-                        )
+                      )
                      }
                </div>
             </div>
-           
-           
-        </div>
+       </div>
     )
 }
 
